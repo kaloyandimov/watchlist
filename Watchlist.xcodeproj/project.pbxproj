@@ -12,6 +12,8 @@
 		C08C7DD527CD36E2002A6E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08C7DD327CD36E2002A6E6C /* Main.storyboard */; };
 		C08C7DD727CD36E3002A6E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C08C7DD627CD36E3002A6E6C /* Assets.xcassets */; };
 		C08C7DDA27CD36E3002A6E6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08C7DD827CD36E3002A6E6C /* LaunchScreen.storyboard */; };
+		C08C7DE427CD8922002A6E6C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08C7DE327CD8922002A6E6C /* Movie.swift */; };
+		C08C7DE627CD8C7F002A6E6C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08C7DE527CD8C7F002A6E6C /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C08C7DD627CD36E3002A6E6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C08C7DD927CD36E3002A6E6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C08C7DDB27CD36E3002A6E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C08C7DE327CD8922002A6E6C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		C08C7DE527CD8C7F002A6E6C /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 		C08C7DCC27CD36E2002A6E6C /* Watchlist */ = {
 			isa = PBXGroup;
 			children = (
+				C08C7DE227CD88FC002A6E6C /* Models */,
 				C08C7DCD27CD36E2002A6E6C /* AppDelegate.swift */,
 				C08C7DCF27CD36E2002A6E6C /* SceneDelegate.swift */,
 				C08C7DD327CD36E2002A6E6C /* Main.storyboard */,
@@ -62,6 +67,15 @@
 				C08C7DDB27CD36E3002A6E6C /* Info.plist */,
 			);
 			path = Watchlist;
+			sourceTree = "<group>";
+		};
+		C08C7DE227CD88FC002A6E6C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C08C7DE527CD8C7F002A6E6C /* Genre.swift */,
+				C08C7DE327CD8922002A6E6C /* Movie.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +151,8 @@
 			files = (
 				C08C7DCE27CD36E2002A6E6C /* AppDelegate.swift in Sources */,
 				C08C7DD027CD36E2002A6E6C /* SceneDelegate.swift in Sources */,
+				C08C7DE427CD8922002A6E6C /* Movie.swift in Sources */,
+				C08C7DE627CD8C7F002A6E6C /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
