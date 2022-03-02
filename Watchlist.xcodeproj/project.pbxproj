@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C018462427CFB1700035B3BF /* MovieInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018462327CFB1700035B3BF /* MovieInfoService.swift */; };
 		C08C7DCE27CD36E2002A6E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08C7DCD27CD36E2002A6E6C /* AppDelegate.swift */; };
 		C08C7DD027CD36E2002A6E6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08C7DCF27CD36E2002A6E6C /* SceneDelegate.swift */; };
 		C08C7DD527CD36E2002A6E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08C7DD327CD36E2002A6E6C /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C018462327CFB1700035B3BF /* MovieInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoService.swift; sourceTree = "<group>"; };
 		C08C7DCA27CD36E2002A6E6C /* Watchlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08C7DCD27CD36E2002A6E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C08C7DCF27CD36E2002A6E6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C018462227CF868E0035B3BF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C018462327CFB1700035B3BF /* MovieInfoService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		C08C7DC127CD36E2002A6E6C = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				C08C7DE227CD88FC002A6E6C /* Models */,
+				C018462227CF868E0035B3BF /* Services */,
 				C08C7DCD27CD36E2002A6E6C /* AppDelegate.swift */,
 				C08C7DCF27CD36E2002A6E6C /* SceneDelegate.swift */,
 				C08C7DD327CD36E2002A6E6C /* Main.storyboard */,
@@ -150,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C08C7DCE27CD36E2002A6E6C /* AppDelegate.swift in Sources */,
+				C018462427CFB1700035B3BF /* MovieInfoService.swift in Sources */,
 				C08C7DD027CD36E2002A6E6C /* SceneDelegate.swift in Sources */,
 				C08C7DE427CD8922002A6E6C /* Movie.swift in Sources */,
 				C08C7DE627CD8C7F002A6E6C /* Genre.swift in Sources */,
