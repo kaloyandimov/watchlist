@@ -7,18 +7,12 @@
 
 import Foundation
 
-struct Endpoint {
-    let path: String
-    let query: String?
-}
-
 extension Endpoint {
-    
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.themoviedb.org"
-        components.path = "/3".appending(path)
+        components.path = "/3".appending(path ?? "")
         components.fragment = nil
         components.queryItems = [
             URLQueryItem(name: "query", value: query),
@@ -30,11 +24,9 @@ extension Endpoint {
         
         return components.url
     }
-    
 }
 
 extension Endpoint {
-    
     static func nowPlaying() -> Endpoint {
         return Endpoint(path: "/movie/now_playing", query: nil)
     }
@@ -51,14 +43,13 @@ extension Endpoint {
         return Endpoint(path: "/movie/upcoming", query: nil)
     }
     
-    static func movie(matching query: String) -> Endpoint {
-        return Endpoint(path: "/search/movie", query: query)
-    }
-    
     static func movie(id: Int) -> Endpoint {
         return Endpoint(path: "/movie/\(id)", query: nil)
     }
     
+    static func movie(matching query: String) -> Endpoint {
+        return Endpoint(path: "/search/movie", query: query)
+    }
 }
 
 struct MovieResponse: Decodable {
@@ -69,7 +60,7 @@ enum MovieError: String, Error {
     case apiError =
             "Failed to fetch data"
     case invalidURL =
-            "Invalid endpoint"
+            "Invalid URL"
     case invalidResponse =
             "Invalid response"
     case invalidData =
@@ -133,4 +124,3 @@ class MovieInfoService {
     }
     
 }
-
