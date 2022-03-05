@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C018462427CFB1700035B3BF /* MovieInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018462327CFB1700035B3BF /* MovieInfoService.swift */; };
+		C018462E27D12DDD0035B3BF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018462D27D12DDD0035B3BF /* Endpoint.swift */; };
+		C018463027D12DF30035B3BF /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018462F27D12DF30035B3BF /* ImageService.swift */; };
 		C08C7DCE27CD36E2002A6E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08C7DCD27CD36E2002A6E6C /* AppDelegate.swift */; };
 		C08C7DD027CD36E2002A6E6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08C7DCF27CD36E2002A6E6C /* SceneDelegate.swift */; };
 		C08C7DD527CD36E2002A6E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08C7DD327CD36E2002A6E6C /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		C018462327CFB1700035B3BF /* MovieInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoService.swift; sourceTree = "<group>"; };
+		C018462D27D12DDD0035B3BF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C018462F27D12DF30035B3BF /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		C08C7DCA27CD36E2002A6E6C /* Watchlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchlist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08C7DCD27CD36E2002A6E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C08C7DCF27CD36E2002A6E6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +48,8 @@
 		C018462227CF868E0035B3BF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C018462D27D12DDD0035B3BF /* Endpoint.swift */,
+				C018462F27D12DF30035B3BF /* ImageService.swift */,
 				C018462327CFB1700035B3BF /* MovieInfoService.swift */,
 			);
 			path = Services;
@@ -164,7 +170,9 @@
 				C018462427CFB1700035B3BF /* MovieInfoService.swift in Sources */,
 				C08C7DD027CD36E2002A6E6C /* SceneDelegate.swift in Sources */,
 				C08C7DE427CD8922002A6E6C /* Movie.swift in Sources */,
+				C018462E27D12DDD0035B3BF /* Endpoint.swift in Sources */,
 				C08C7DE627CD8C7F002A6E6C /* Genre.swift in Sources */,
+				C018463027D12DF30035B3BF /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
