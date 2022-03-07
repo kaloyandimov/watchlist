@@ -20,11 +20,11 @@ extension Endpoint {
 }
 
 extension Endpoint {
-    static func backdrop(path: String) -> Endpoint {
+    static func backdrop(path: String?) -> Endpoint {
         return Endpoint(path: path, query: nil)
     }
     
-    static func poster(path: String) -> Endpoint {
+    static func poster(path: String?) -> Endpoint {
         return Endpoint(path: path, query: nil)
     }
 }
@@ -67,7 +67,7 @@ class ImageService {
             return
         }
         
-        urlSession.downloadTask(with: endpoint.imageURL!) { (srcURL, response, error) in
+        urlSession.downloadTask(with: endpoint.imageURL!) { [weak self] (srcURL, response, error) in
             if error != nil {
                 completion(.failure(.apiError))
                 return
@@ -88,7 +88,7 @@ class ImageService {
                 return
             }
             
-            try? self.fileManager.moveItem(at: srcURL, to: dstURL)
+            try? self?.fileManager.moveItem(at: srcURL, to: dstURL)
             completion(.success(data))
             
         }.resume()
