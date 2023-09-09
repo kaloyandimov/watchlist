@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="123.88392857142857"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="7br-4I-Zqg">
             <objects>
                 <tableViewController id="ffW-cu-VJh" customClass="SearchViewController" customModule="Watchlist" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Ff3-6t-NB7"/>
+                    <navigationItem key="navigationItem" title="Search" id="Ff3-6t-NB7"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1G8-Y5-Hlv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

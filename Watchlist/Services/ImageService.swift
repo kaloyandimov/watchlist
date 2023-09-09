@@ -12,7 +12,7 @@ extension Endpoint {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "image.tmdb.org"
-        components.path = "/t/p/w500".appending(path!)
+        components.path = "/t/p/original".appending(path!)
         components.fragment = nil
         
         return components.url
@@ -20,11 +20,11 @@ extension Endpoint {
 }
 
 extension Endpoint {
-    static func backdrop(path: String?) -> Endpoint {
+    static func backdrop(with path: String?) -> Endpoint {
         return Endpoint(path: path, query: nil)
     }
     
-    static func poster(path: String?) -> Endpoint {
+    static func poster(with path: String?) -> Endpoint {
         return Endpoint(path: path, query: nil)
     }
 }
@@ -62,7 +62,11 @@ class ImageService {
         let dstURL = cacheURL.appendingPathComponent(String(path))
         
         if fileManager.fileExists(atPath: dstURL.path) {
-            let data = try! Data(contentsOf: dstURL)
+            guard let data = try? Data(contentsOf: dstURL) else {
+                completion(.failure(.invalidImageData))
+                return
+            }
+            
             completion(.success(data))
             return
         }

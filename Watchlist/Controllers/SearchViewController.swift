@@ -14,12 +14,19 @@ class SearchViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Search"
+        
+        let nib = UINib(nibName: "SearchCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "searchCell")
+        
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Movies"
+        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        tableView.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "searchCell")
     }
+    
+    // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
@@ -33,6 +40,18 @@ class SearchViewController: UITableViewController {
         return cell
     }
 }
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        
+        results.removeAll()
+        
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Search results updating
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
