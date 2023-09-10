@@ -21,6 +21,7 @@ class SearchViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Movies"
+        searchController.searchBar.autocapitalizationType = .none
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
