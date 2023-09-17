@@ -9,10 +9,12 @@ import UIKit
 
 class TileCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var posterImage: UIImageView!
     
     static let identifier = "TileCell"
-
+    
+    var uuid: UUID?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -24,17 +26,25 @@ class TileCell: UICollectionViewCell {
     func configure(with movie: Movie) {
         titleLabel.text = movie.title
         
-        ImageService.shared.request(.poster(with: movie.posterPath)) { result in
+        uuid = ImageService.shared.request(.poster(movie.posterPath)) { result in
             switch result {
-            case .success(let data):
+            case .success(let image):
                 DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data)
+                    self.posterImage.image = image
                 }
-            case .failure(_):
+            case .failure:
                 DispatchQueue.main.async {
-                    self.imageView.image = UIImage(named: "poster")
+                    self.posterImage.image = UIImage(named: "poster")
                 }
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        posterImage.image = nil
+        
+        ImageService.shared.cancelRequest(uuid)
     }
 }

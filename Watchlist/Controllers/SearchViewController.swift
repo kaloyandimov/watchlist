@@ -56,11 +56,11 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text, !text.isEmpty else {
+        guard let title = searchController.searchBar.text, !title.isEmpty else {
             return
         }
         
-        MovieInfoService.shared.request(.movie(matching: text)) { [weak self] (result: Result<MovieResponse, MovieError>) in
+        MovieService.shared.request(.search(title)) { [weak self] (result: Result<MovieResponse, MovieError>) in
             switch result {
             case .success(let success):
                 self?.results = success.results

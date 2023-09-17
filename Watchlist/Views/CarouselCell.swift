@@ -26,32 +26,16 @@ class CarouselCell: UITableViewCell {
         return UINib(nibName: identifier, bundle: nil)
     }
     
-    func configure(for endpointString: String) {
-        var endpoint: Endpoint
-        
-        switch endpointString {
-        case "Now Playing":
-            endpoint = Endpoint.nowPlaying()
-        case "Popular":
-            endpoint = Endpoint.popular()
-        case "Top Rated":
-            endpoint = Endpoint.topRated()
-        case "Upcoming":
-            endpoint = Endpoint.upcoming()
-        default:
-            endpoint = Endpoint.popular()
-        }
-        
-        MovieInfoService.shared.request(endpoint) { (result: Result<MovieResponse, MovieError>) in
+    func configure(for endpoint: MovieEndpoint) {
+        MovieService.shared.request(endpoint) { result in
             switch result {
-            case .success(let data):
+            case .success(let response):
                 DispatchQueue.main.async {
-                    self.movies = data.results
+                    self.movies = response.results
                     self.collectionView.reloadData()
                 }
-            case .failure(let error):
+            case .failure:
                 self.movies = []
-                print(error)
             }
         }
     }

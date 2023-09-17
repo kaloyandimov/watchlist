@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Endpoint {
-    let path: String?
-    let query: String?
+protocol Endpoint {
+    var url: URL? { get }
+    var path: String? { get }
+    var query: String? { get }
 }

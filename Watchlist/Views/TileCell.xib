@@ -48,7 +48,7 @@
             </constraints>
             <size key="customSize" width="790.33333333333337" height="990"/>
             <connections>
-                <outlet property="imageView" destination="p8p-Vb-LIP" id="NWG-8O-D1i"/>
+                <outlet property="posterImage" destination="p8p-Vb-LIP" id="NWG-8O-D1i"/>
                 <outlet property="titleLabel" destination="F2I-pH-4Za" id="3M8-SY-amI"/>
             </connections>
             <point key="canvasLocation" x="351.90839694656489" y="265.84507042253523"/>

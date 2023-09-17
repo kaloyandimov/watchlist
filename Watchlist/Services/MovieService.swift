@@ -1,5 +1,5 @@
 //
-//  MovieInfoService.swift
+//  MovieService.swift
 //  Watchlist
 //
 //  Created by Kaloyan Dimov on 2.03.22.
@@ -7,7 +7,14 @@
 
 import Foundation
 
-extension Endpoint {
+enum MovieEndpoint: Endpoint {
+    case nowPlaying
+    case popular
+    case topRated
+    case upcoming
+    case movie(Int)
+    case search(String)
+    
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"
@@ -24,69 +31,77 @@ extension Endpoint {
         
         return components.url
     }
+    
+    var path: String? {
+        switch self {
+        case .nowPlaying:
+            return "/movie/now_playing"
+        case .popular:
+            return "/movie/popular"
+        case .topRated:
+            return "/movie/top_rated"
+        case .upcoming:
+            return "/movie/upcoming"
+        case .movie(let id):
+            return "/movie/\(id)"
+        case .search:
+            return "/search/movie"
+        }
+    }
+    
+    var query: String? {
+        switch self {
+        case .nowPlaying, .popular, .topRated, .upcoming, .movie:
+            return nil
+        case .search(let query):
+            return query
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .nowPlaying:
+            return "Now Playing"
+        case .popular:
+            return "Popular"
+        case .topRated:
+            return "Top Rated"
+        case .upcoming:
+            return "Upcoming"
+        case .movie:
+            return "Movie"
+        case .search:
+            return "Search"
+        }
+    }
 }
 
-extension Endpoint {
-    static func nowPlaying() -> Endpoint {
-        return Endpoint(path: "/movie/now_playing", query: nil)
-    }
-    
-    static func popular() -> Endpoint {
-        return Endpoint(path: "/movie/popular", query: nil)
-    }
-    
-    static func topRated() -> Endpoint {
-        return Endpoint(path: "/movie/top_rated", query: nil)
-    }
-    
-    static func upcoming() -> Endpoint {
-        return Endpoint(path: "/movie/upcoming", query: nil)
-    }
-    
-    static func movie(id: Int) -> Endpoint {
-        return Endpoint(path: "/movie/\(id)", query: nil)
-    }
-    
-    static func movie(matching query: String) -> Endpoint {
-        return Endpoint(path: "/search/movie", query: query)
-    }
+enum MovieError: String, Error {
+    case apiError = "Failed to fetch data"
+    case deserializationError = "Failed to decode data"
+    case invalidData = "Invalid data"
+    case invalidResponse = "Invalid response"
+    case invalidURL = "Invalid URL"
 }
 
 struct MovieResponse: Decodable {
     let results: [Movie]
 }
 
-enum MovieError: String, Error {
-    case apiError =
-            "Failed to fetch data"
-    case invalidURL =
-            "Invalid URL"
-    case invalidResponse =
-            "Invalid response"
-    case invalidData =
-            "Invalid data"
-    case deserializationError =
-            "Failed to decode data"
-}
-
-class MovieInfoService {
+class MovieService {
+    static let shared = MovieService()
     
-    static let shared = MovieInfoService()
-    
-    private let urlSession = URLSession.shared
     private let jsonDecoder = customJSONDecoder()
     
     private init() { }
     
-    func request<D: Decodable>(_ endpoint: Endpoint, completion: @escaping (Result<D, MovieError>) -> ()) {
+    func request(_ endpoint: MovieEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
         guard let url = endpoint.url else {
             completion(.failure(.invalidURL))
             return
         }
         
-        urlSession.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let self = self else { return }
-            
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
                 completion(.failure(.apiError))
                 return
@@ -103,12 +118,12 @@ class MovieInfoService {
             }
             
             do {
-                let decodedData = try self.jsonDecoder.decode(D.self, from: data)
-                completion(.success(decodedData))
+                let movies = try self.jsonDecoder.decode(MovieResponse.self, from: data)
+                
+                completion(.success(movies))
             } catch {
                 completion(.failure(.deserializationError))
             }
-            
         }.resume()
     }
     
@@ -122,5 +137,4 @@ class MovieInfoService {
         
         return jsonDecoder
     }
-    
 }

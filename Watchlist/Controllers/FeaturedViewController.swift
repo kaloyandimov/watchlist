@@ -8,7 +8,7 @@
 import UIKit
 
 class FeaturedViewController: UITableViewController {
-    let sections = ["Now Playing", "Popular", "Top Rated", "Upcoming"]
+    let sections: [MovieEndpoint] = [.nowPlaying, .popular, .topRated, .upcoming]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,6 @@ extension FeaturedViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        return sections[section].name
     }
 }
