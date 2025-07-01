@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Watchlist
 //
-//  Created by Kaloyan Dimov on 28.02.22.
+//  Created by Kaloyan Dimov on 1.07.25.
 //
 
 import UIKit
